@@ -31,6 +31,7 @@ int main()
 	convertMe.startBase = 0;
 	convertMe.endBase = 0;
 	char loop;
+	bool validDigits = true;
 
 	
 	// Get input from user
@@ -44,7 +45,7 @@ int main()
 			cin >> convertMe.startBase;
 			cout << endl << "  Please enter the desired number base(2-16):  ";
 			cin >> convertMe.endBase;
-		} while ((convertMe.startBase > 1 && convertMe.startBase < 17)|| (convertMe.endBase > 1 && convertMe.endBase < 17));
+		} while (!((convertMe.startBase > 1 && convertMe.startBase < 17) && (convertMe.endBase > 1 && convertMe.endBase < 17)));
 
 		cout << endl << "  Please enter the number to convert:  ";
 		cin >> input;
@@ -60,23 +61,33 @@ int main()
 			convertMe.numStart[i] = convertMe.numStart[(convertMe.startArray - 1) - i];
 			convertMe.numStart[(convertMe.startArray - 1) - i] = temp;
 		}
-		convertMe = base2base(convertMe); //converts number
-
-		//Print result
-		cout << endl << endl << "The number ";
-
-		for (int i = convertMe.startArray - 1; i >= 0; i--)
+		//Checks 
+		for (int i = 0; i < convertMe.startArray; i++)
 		{
-			cout << convertMe.numStart[i];
+			if (charCoder(convertMe.numStart[i]) >= convertMe.startBase)
+				validDigits = false;
 		}
-
-		cout << ", base " << convertMe.startBase << ", is expressed in base " << convertMe.endBase << " as ";
-
-		for (int i = convertMe.endArray - 1; i >= 0; i--)
+		if (validDigits)
 		{
-			cout << convertMe.numEnd[i];
-		}
+			convertMe = base2base(convertMe); //converts number
 
+			//Print result
+			cout << endl << endl << "The number ";
+
+			for (int i = convertMe.startArray - 1; i >= 0; i--)
+			{
+				cout << convertMe.numStart[i];
+			}
+
+			cout << ", base " << convertMe.startBase << ", is expressed in base " << convertMe.endBase << " as ";
+
+			for (int i = convertMe.endArray - 1; i >= 0; i--)
+			{
+				cout << convertMe.numEnd[i];
+			}
+		}
+		else
+			cout << endl << "  Input number has invalid digits. Please try again.";
 		cout << endl << "Would you like to convert another Number? (y/n)  :";
 		cin >> loop;
 		

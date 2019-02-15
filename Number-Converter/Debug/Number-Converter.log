@@ -1,4 +1,4 @@
 ﻿  Source.cpp
-c:\users\daniel\documents\github\number-converter\number-converter\source.cpp(189): warning C4715: 'charCoder': not all control paths return a value
-c:\users\daniel\documents\github\number-converter\number-converter\source.cpp(244): warning C4715: 'charCoder': not all control paths return a value
+c:\users\daniel\documents\github\number-converter\number-converter\source.cpp(199): warning C4715: 'charCoder': not all control paths return a value
+c:\users\daniel\documents\github\number-converter\number-converter\source.cpp(254): warning C4715: 'charCoder': not all control paths return a value
   Number-Converter.vcxproj -> C:\Users\Daniel\Documents\GitHub\Number-Converter\Debug\Number-Converter.exe
